@@ -1,0 +1,9 @@
+Options +FollowSymLinks
+IndexIgnore */*
+
+#Если URI начинается с api/ то перенаправлять все запросы на bootstrap.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ /bootstrap.php
+RewriteRule .* bootstrap.php [L]

@@ -1,6 +1,7 @@
 <?php
 
 namespace lib;
+
 use PDO;
 
 class Db
@@ -10,7 +11,7 @@ class Db
 
 	public function __construct()
 	{
-		$config = require(__DIR__."/../config.php");
+		$config = require(__DIR__."/../../config.php");
 		$this->db = new PDO('mysql:host='. $config['db']['host'] . ';dbname=' . $config['db']['name'], $config['db']['user'], $config['db']['password']);
 	}
 
@@ -36,16 +37,6 @@ class Db
 	{
 		$result = $this->query($sql, $params);
 		return $result->fetch(PDO::FETCH_ASSOC);
-	}
-
-	public function create($sql, $params = [])
-	{
-		$this->query($sql, $params);
-	}
-
-	public function update($sql, $params = [])
-	{
-		$this->query($sql, $params);
 	}
 
 }
